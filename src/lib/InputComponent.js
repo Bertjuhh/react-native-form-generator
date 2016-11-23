@@ -17,7 +17,6 @@ export class InputComponent extends React.Component{
     super(props);
 
     this.triggerValidation = this.triggerValidation.bind(this);
-    // this.validate = this.validate.bind(this)
     this.validate(props.value);
     this.validationErrors = [];
     this.state = {
@@ -25,7 +24,6 @@ export class InputComponent extends React.Component{
       value: props.value,
       minFieldHeight: props.height || 44,
       inputHeight: Math.max(props.height || 44),
-      // isValid:
     };
     this.setValue = this.setValue.bind(this)
     this.focus = this.focus.bind(this)
@@ -55,10 +53,6 @@ export class InputComponent extends React.Component{
 
     if(!!this.props.validationFunction) {
       if(this.props.validationFunction.constructor === Array){
-        /*
-        validationFunction has to return an object in case of error,
-          true in case of successful validation
-         */
         this.props.validationFunction.map((valFn, i)=>{
 
           let validationResult = valFn(value, this);
@@ -103,7 +97,6 @@ export class InputComponent extends React.Component{
 
 	      this.setState(e.nativeEvent.layout);
 	  }
-    // //e.nativeEvent.layout: {x, y, width, height}}}.
   }
 
   handleLabelLayoutChange(e){
@@ -112,26 +105,16 @@ export class InputComponent extends React.Component{
 
 	      this.setState({labelWidth:width});
 	  }
-    // //e.nativeEvent.layout: {x, y, width, height}}}.
   }
   handleChange(event){
     const value = event.nativeEvent.text;
 
     this.validate(value);
-
-    this.setState({value,
-      inputHeight: Math.max(this.state.minFieldHeight,
-        (event.nativeEvent.contentSize && this.props.multiline)
-          ? event.nativeEvent.contentSize.height
-          : 0)
-      });
-    //this.props.onChange(this.props.fieldRef, value);
     if(this.props.onChange)      this.props.onChange(value, this.valid);
     if(this.props.onValueChange) this.props.onValueChange(value,this.valid);
   }
 
   _scrollToInput (event) {
-    //debugger;
     if (this.props.onFocus) {
       let handle = ReactNative.findNodeHandle(this.refs.inputBox);
       this.props.onFocus(
@@ -144,11 +127,6 @@ export class InputComponent extends React.Component{
     this.refs.inputBox.focus();
   }
   render(){
- // style={[formStyles.fieldContainer,
- //     formStyles.horizontalContainer,
- //     this.props.containerStyle,
- //     {height: this.state.inputHeight+1}
- //   ]}
     return(<Field {...this.props}>
         <View
           onLayout={this.handleLayoutChange}
@@ -175,18 +153,14 @@ export class InputComponent extends React.Component{
             keyboardType = {this.props.keyboardType}
             style={[
                 this.props.inputStyle,
-                {height: this.state.inputHeight}
+                {height: this.state.inputHeight, color: 'black'}
               ]}
-
             onChange={this.handleChange}
             onFocus={this._scrollToInput}
             placeholder={this.props.placeholder}
+            placeholderTextColor="black"
+            underlineColorAndroid="transparent"
             value={this.state.value}
-            width={this.state.width-this.state.labelWidth
-                -((this.props.iconRight)?this.props.iconRight.props.size:0)
-                -((this.props.iconLeft)?this.props.iconLeft.props.size:0)
-              }
-
             />
           {(this.props.iconRight)
               ? this.props.iconRight
@@ -196,13 +170,7 @@ export class InputComponent extends React.Component{
       </Field>
     )
   }
-
 }
-
-// InputComponent.propTypes = {
-//   multiline: React.PropTypes.bool,
-//   placeholder:React.PropTypes.string,
-// }
 
 InputComponent.propTypes = {
   labelStyle: Text.propTypes.style,

@@ -47,15 +47,15 @@ export class DatePickerField extends React.Component{
           // borderTopColor: '#C8C7CC',
           // borderTopWidth: 1,
           paddingTop: 35,
-          borderBottomColor: '#C8C7CC',
-          borderBottomWidth: 1,
+          // borderBottomColor: '#C8C7CC',
+          // borderBottomWidth: 1,
 
         },
         separator:{
 
           paddingLeft: 10,
           paddingRight: 10,
-          color: '#6D6D72',
+          color: 'black',
           paddingBottom: 7
 
         },
@@ -69,8 +69,8 @@ export class DatePickerField extends React.Component{
           justifyContent: 'flex-start'
         },
         fieldContainer:{
-          borderBottomWidth: 1,
-          borderBottomColor: '#C8C7CC',
+          // borderBottomWidth: 1,
+          // borderBottomColor: '#C8C7CC',
           backgroundColor: 'white',
           justifyContent: 'center',
           height: 45
@@ -78,12 +78,12 @@ export class DatePickerField extends React.Component{
         fieldValue:{
           fontSize: 34/2,
           paddingLeft: 10,
-          paddingRight: 10,
-          marginRight:10,
+          //paddingRight: 10,
+          //marginRight:10,
           paddingTop: 4,
           justifyContent: 'center',
 
-          color: '#C7C7CC'
+          color: 'black'
         },
         fieldText:{
           fontSize: 34/2,
