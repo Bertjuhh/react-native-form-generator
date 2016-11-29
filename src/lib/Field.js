@@ -20,7 +20,7 @@ export class Field extends React.Component{
         </View>
       </TouchableHighlight>
     }
-    return   <View>
+    return   <View style={{flex:1}}>
       {this.props.children}
       {fieldHelpText}
     </View>;

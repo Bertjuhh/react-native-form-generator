@@ -51,7 +51,7 @@ let formStyles = StyleSheet.create({
     right: 10
   },
   textRight:{
-    textAlign: 'right'
+    textAlign: 'right',
   },
   multiline:{
     lineHeight: 32,
@@ -75,13 +75,14 @@ let formStyles = StyleSheet.create({
     paddingRight: 10,
     justifyContent: 'center',
     lineHeight: 32,
-    color: 'black'
+    color: 'black',
   },
   input:{
     paddingLeft: 10,
     paddingRight: 10,
     color: 'black',
     fontSize: 32/2,
+    flex:1,
   },
   helpTextContainer:{
     marginTop:9,
